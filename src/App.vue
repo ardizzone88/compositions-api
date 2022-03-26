@@ -1,6 +1,6 @@
 <template>
   <button @click="show = !show">Menú</button>
-<!-- Transicions in components -->
+  <!-- Transicions in components -->
   <transition name="fade">
     <HomeVue v-show="show" />
   </transition>
@@ -22,6 +22,15 @@ export default {
     return {
       show: false,
     };
+  },
+  beforeCreate() {
+    console.log("beforeCreate", this.$data, this.$el);
+  },
+  created() {
+    console.log("created", this.$data, this.$el);
+  },
+  mounted() {
+    console.log("mounted", this.$data, this.$el);
   },
 };
 </script>
