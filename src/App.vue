@@ -1,17 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <button @click="show = !show">Menú</button>
+  <transition name="fade">
+    <HomeVue v-show="show" />
+  </transition>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import HomeVue from "./components/HomeVue.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HomeVue,
+  },
+  data() {
+    return {
+      show: false,
+    };
+  },
+};
 </script>
 
 <style>
@@ -22,5 +28,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+  border: 1px solid red;
 }
 </style>
