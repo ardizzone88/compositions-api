@@ -1,4 +1,8 @@
 <template>
+  <div>
+    {{ text }}
+  </div>
+  <div>{{ algo }}</div>
   <button @click="show = !show">Menú</button>
   <!-- Transicions in components -->
   <transition name="fade">
@@ -12,8 +16,12 @@
 <script>
 import HomeVue from "./components/HomeVue.vue";
 import ModalVue from "./components/ModalVue.vue";
+// mixins
+import base from "@/mixins/base.js";
+
 export default {
   name: "App",
+  mixins: [base],
   components: {
     HomeVue,
     ModalVue,
@@ -23,6 +31,7 @@ export default {
       show: false,
     };
   },
+  // Hooks
   beforeCreate() {
     console.log("beforeCreate", this.$data, this.$el);
   },
